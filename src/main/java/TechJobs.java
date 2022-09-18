@@ -128,23 +128,30 @@ public class TechJobs {
     // Print a list of jobs
     private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 
-        if (someJobs.size() >= 1) {
+    /* if (someJobs.size() >= 1) {}  ----- Removed this line b/c it is more efficient to check for invalid entry first.
+     If there are no job results based on user input search term entered, then there is no reason/data to create a
+     HashMap to iterate through! So, TA Kris had me switch the order of the if/else and use .isEmpty() first! */
+
+        if (someJobs.isEmpty()) {   // Checks if there are any results to print and sends message accordingly.
+
+            System.out.print("No Results");
+
+        } else {  //  If there ARE results to print, then it does the following steps...
             /* For every HashMap (job) in the ArrayList of HashMaps (someJobs), print line brk & formatting, then
             create an entrySet() of key/values and iterate through to print them, followed by more formatting. */
             for (HashMap<String, String> job : someJobs) {
 
-                System.out.println();
-                System.out.println("*****");
+                System.out.println();  //  prints line break
+                System.out.println("*****");    // prints formatting
 
+                //  creates a Map set (jobInfo) of k/v pairs for each (job) of (someJobs) ArrayList of HashMaps search.
                 for (Map.Entry<String, String> jobInfo : job.entrySet()) {
-                    System.out.println(jobInfo.getKey() + ": " + jobInfo.getValue());
+                    System.out.println(jobInfo.getKey() + ": " + jobInfo.getValue());  //  prints the "key: value"
                 }
 
-                System.out.println("*****");
+                System.out.println("*****");  //  prints formatting
             }
 
-        } else {
-            System.out.print("No Results");
         }
     }
 
@@ -159,12 +166,12 @@ public class TechJobs {
 //
 //    private static void printJobs(ArrayList<HashMap<String, String>> someJobs) {
 //
-// /* Part 1: Implement printJobs - Per Directions, I created a nested loop to iterate over each HashMap.
-//    NOTE: I had to utilize the advice on Slack for Windows-users removing all hard-coded "\n" line breaks and replace
-//    with System.out.println() to pass print tests. Used if/else for initial conditionals to ensure there
-//    is data to return/print based on user input by checking the .size() of someJobs. */
-//
-////      Started with if/else conditional
+ /* Part 1: Implement printJobs - Per Directions, I created a nested loop to iterate over each HashMap.
+    NOTE: I had to utilize the advice on Slack for Windows-users removing all hard-coded "\n" line breaks and replace
+    with System.out.println() to pass print tests. Used if/else for initial conditionals to ensure there
+    is data to return/print based on user input by checking the .size() of someJobs. */
+
+//      Started with if/else conditional
 //        if (someJobs.size() >= 1) {
 //
 //           /* Created a for : each loop to iterate over each HashMap (job) : in the ArrayList of HashMops (someJobs) to
